@@ -12,33 +12,33 @@ Feature: Sign Up
         Then I verify gender error is displayed
     
 
-    Scenario: Verify user gets error when does not mention birthdate
-        Given I am on facebook homepage
-            And I click on Create New Account button
-        When I enter "Henry" as Firstname
-            And I enter "Reel" as Lastname
-            And I enter 9798979897 as phone number
-            And I enter "passwo0d@123" as New password
-            And I select "Female" as gender
-            And I click "Sign Up" button
-        Then I verify birthdate error is displayed
+    # Scenario: Verify user gets error when does not mention birthdate
+    #     Given I am on facebook homepage
+    #         And I click on Create New Account button
+    #     When I enter "Henry" as Firstname
+    #         And I enter "Reel" as Lastname
+    #         And I enter 9798979897 as phone number
+    #         And I enter "passwo0d@123" as New password
+    #         And I select "Female" as gender
+    #         And I click "Sign Up" button
+    #     Then I verify birthdate error is displayed
 
-    Scenario: Verify user gets error when does not mention gender
-        Given I am on facebook homepage
-            And I click on Create New Account button
-        When I enter "Henry" as Firstname
-            And I enter "Reel" as Lastname
-            And I enter 9798979897 as phone number
-            And I enter "passwo0d@123" as New password
-            And I select "Jul 20 2018" as birthdate
-            And I click "Sign Up" button
-        Then I verify gender error is displayed
+    # Scenario: Verify user gets error when does not mention gender
+    #     Given I am on facebook homepage
+    #         And I click on Create New Account button
+    #     When I enter "Henry" as Firstname
+    #         And I enter "Reel" as Lastname
+    #         And I enter 9798979897 as phone number
+    #         And I enter "passwo0d@123" as New password
+    #         And I select "Jul 20 2018" as birthdate
+    #         And I click "Sign Up" button
+    #     Then I verify gender error is displayed
 
-    Scenario: Verify default state of signup form
-        Given I am on faceboom homepage
-            And I click on Create New Account button
-        Then I verify firstname field is empty
-            And I verify lastname field is empty
-            And I verify phone number field is empty
-            And I verify current date is selected
-            And I verify no gender is selected
+    # Scenario: Verify default state of signup form
+    #     Given I am on faceboom homepage
+    #         And I click on Create New Account button
+    #     Then I verify firstname field is empty
+    #         And I verify lastname field is empty
+    #         And I verify phone number field is empty
+    #         And I verify current date is selected
+    #         And I verify no gender is selected

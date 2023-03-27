@@ -66,14 +66,11 @@ When(/^I enter "(.+)" as (.+)$/, async function(data, field) {
 });
 
 
-
-
 When(/^I click "Sign Up" button$/, async function() {
     await signuppage.clickSignUpBtn();
 });
 
 Then(/^I verify gender error is displayed$/, async function () {
-    await browser.pause(20000);
     const isErrDisplayed = await signuppage.isGenderErrorDisplayed();
     expect(isErrDisplayed, 'Gender error is NOT displayed').to.be.true;
 });
