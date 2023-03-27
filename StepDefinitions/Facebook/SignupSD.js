@@ -1,7 +1,7 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 const { expect } = require("chai");
-const Homepage = require('../Pages/Facebook/Homepage');
-const SignupPage = require('../Pages/Facebook/SignupPage');
+const Homepage = require('../../Pages/Facebook/Homepage');
+const SignupPage = require('../../Pages/Facebook/SignupPage');
 
 const homepage = new Homepage();
 const signuppage = new SignupPage();
