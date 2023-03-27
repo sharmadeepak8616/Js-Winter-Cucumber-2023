@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "types": [
+            "node",
+            "@wdio/cucumber-framework"
+        ]
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
