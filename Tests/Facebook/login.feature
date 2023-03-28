@@ -1,21 +1,39 @@
+@regression @login
 Feature: Login
 
-    Scenario: Verify user gets error for invalid login credentials
+    Background: 
         Given I am on facebook homepage
-        When I enter !@#$ as login username
-        And I enter abcd@1234 as login password
-        And I click login button
+
+    @emptyLogin
+    Scenario: Verify empty login flow
+        When I click login button
         Then I verify login error is displayed
 
-    Scenario: Verify user gets error for invalid login credentials-2
-        Given I am on facebook homepage
-        When I enter deepak@technosoftacademy.io as login username
-        And I enter abcd@1234 as login password
-        And I click login button
-        Then I verify login error is displayed
-
+    @loginFieldStatus
     Scenario: Verify login fields are enabled
-        Given I am on facebook homepage
         Then I verify login username field is enabled
         And I verify login password field is enabled
         And I verify login button is enabled
+
+    @loginInvalid @loginSanity @test
+    Scenario Outline: Verify user gets error for invalid login credentials
+        When I enter <username> as login username
+        And I enter <password> as login password
+        And I click login button
+        Then I verify login error is displayed
+
+        Examples: 
+        | username                     | password   |
+        | !@#$                         | abcd@1234  |
+        | deepak2@technosoftacademy.io | abcd@12342 |
+        | deepak3@technosoftacademy.io | abcd@12343 |
+        | deepak4@technosoftacademy.io | abcd@12344 |
+        | deepak5@technosoftacademy.io | abcd@12345 |
+        | deepak6@technosoftacademy.io | abcd@12346 |
+
+    @smoke @loginSanity
+    Scenario: Verify user logins with valid credentials
+        When I enter user@fb.com as login username
+            And I enter passw0rd as login password
+            And I click login button
+        Then I verify homepage is displayed

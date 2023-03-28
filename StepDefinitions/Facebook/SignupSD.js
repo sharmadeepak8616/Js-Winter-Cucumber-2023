@@ -43,7 +43,7 @@ Given(/^I click on Create New Account button$/, async function() {
 //     await signuppage.selectBirthDate(bDate);
 // });
 
-When(/^I enter "(.+)" as (.+)$/, async function(data, field) {
+When(/^I (enter|select) "(.+)" as (Firstname|Lastname|phone number|New password|birthdate)$/, async function(action, data, field) {
     switch (field) {
         case 'Firstname':
             await signuppage.enterFirstName(data);
