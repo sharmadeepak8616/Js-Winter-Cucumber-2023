@@ -3,6 +3,7 @@ WEBDRIVER-IO DOCS:
 
 
 EXECUTION:
+
     To run all feature files:
         npx wdio wdio.conf.js
     
@@ -47,4 +48,115 @@ ALLURE REPORT:
     To open allure report:
         allure open
         Note: make sure to be in the folder which contains allure-report
+    
+    To attach screenshot on failure in Allure report:
+        in wdio.conf.js:
+            in reports array, make sure to add property
+                disableWebdriverScreenshotsReporting: false
+            
+            in afterStep function (under Cucumber Hooks):
+                afterStep: async function (step, scenario, {error, duration, passed}, context) {
+                    if (error) {
+                        await browser.takeScreenshot();
+                    }
+                },
+
+CROSS BROWSER TESTING:
+
+    To install selenium-standalone:
+        npm install @wdio/selenium-standalone-service --save-dev
+
+    To add firefox-profile-services:
+        npm install @wdio/firefox-profile-service --save-dev
+
+    To use selenium-standalone as services:
+        in wdio.conf.js:
+                services: ['selenium-standalone'],
+
+    To run testcases in cross-browser testing:
+        in wdio.conf.js:
+            capabilities: [{
+                maxInstances: 5,
+                browserName: 'chrome',
+                acceptInsecureCerts: true
+            },
+            {
+                maxInstances: 5,
+                browserName: 'firefox',
+                acceptInsecureCerts: true
+            }],
+
+
+BROWSER-STACK SET UP:
+
+    WebDriver-IO Docs:
+        https://webdriver.io/docs/browserstack-service
+
+    Browser Stack Docs:
+        https://www.browserstack.com/docs/automate/selenium/getting-started/nodejs/webdriverio
+        OR
+        Refer "Quick Integration Guide" or "Get Started" after login
+    
+    CAPABILITIES REFERRAL:
+        https://www.browserstack.com/automate/capabilities
+
+    To Add Browser Stack:
+        npm install @wdio/browserstack-service --save-dev
+    
+        in wdio.conf.js:
+            exports.config: {
+                // ...
+                user: 'usernameFromBrowserStack',
+                key: 'accessKeyFromBrowserStack,
+                ...
+                ...
+                ...
+                services: [
+                    ['browserstack', {
+                        preferScenarioName: true
+                    }]
+                ],
+                ...
+                ...
+                capabilities: [
+                    {
+                        maxInstances: 5,
+                        browserName: 'Chrome',
+                        'bstack:options': {
+                        os: 'Windows',
+                        osVersion: '11',
+                        browserVersion: '103.0'
+                        },
+                        acceptInsecureCerts: true
+                    },
+                    {
+                        maxInstances: 5,
+                        browserName: 'Edge',
+                        'bstack:options': {
+                        os: 'Windows',
+                        osVersion: '10',
+                        browserVersion: '110.0'
+                        },
+                        acceptInsecureCerts: true
+                    },
+                    {
+                        maxInstances:5,
+                        browserName: 'Chrome',
+                        'bstack:options': {
+                        os: 'OS X',
+                        osVersion: 'Ventura',
+                        browserVersion: 'latest'
+                        },
+                        acceptInsecureCerts: true
+                    }
+                ],
+                ...
+                ...
+                ...
+            }
+
+
+
+
+
         

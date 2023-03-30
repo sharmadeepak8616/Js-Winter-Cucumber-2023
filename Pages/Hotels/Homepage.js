@@ -67,7 +67,7 @@ class Homepage {
         }
     }
 
-    // // Calendar functions
+    // Calendar functions
     async selectDate(date) {
         const isDoneBtnDisplayed = await $(this.#calendarDoneButtonLocator).isDisplayed();
         if (isDoneBtnDisplayed) {

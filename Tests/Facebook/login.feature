@@ -1,15 +1,12 @@
 @regression @login
 Feature: Login
 
-    Background: 
-        Given I am on facebook homepage
-
-    @emptyLogin
+    @emptyLogin @test @testAllure
     Scenario: Verify empty login flow
         When I click login button
         Then I verify login error is displayed
 
-    @loginFieldStatus
+    @loginFieldStatus @test @testAllure
     Scenario: Verify login fields are enabled
         Then I verify login username field is enabled
         And I verify login password field is enabled
@@ -36,4 +33,4 @@ Feature: Login
         When I enter user@fb.com as login username
             And I enter passw0rd as login password
             And I click login button
-        Then I verify homepage is displayed
+        Then I verify logged in is successful

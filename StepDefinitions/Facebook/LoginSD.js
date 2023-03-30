@@ -31,3 +31,22 @@ Then(/^I verify login error is displayed$/, async function () {
     expect(isErrDisplayed, 'Login error is NOT displayed').to.be.true;
 });
 
+Then(/^I verify login (.+) is enabled$/, async function (field) {
+    switch (field) {
+        case 'username field':
+            const isLoginUsrFieldEnabled = await homepage.isLoginEmailEnabled();
+            expect(isLoginUsrFieldEnabled, 'Login username field is NOT enabled').to.be.true;
+            break;
+        case 'password field':
+            const isLoginPwdFieldEnabled = await homepage.isLoginPasswordEnabled();
+            expect(isLoginPwdFieldEnabled, 'Login password field is NOT enabled').to.be.true;
+            break;
+        case 'button':
+            const isLoginBtnFieldEnabled = await homepage.isLoginButtonEnabled();
+            expect(isLoginBtnFieldEnabled, 'Login button is NOT enabled').to.be.true;
+            break;
+        default:
+            break;
+    }
+})
+
